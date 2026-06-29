@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ejercicio Simple - Python</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      background: #f2f2f2;
+      color: #111;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      text-align: center;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      box-sizing: border-box;
+      margin-bottom: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #2563eb;
+      color: white;
+      transition: background 0.2s ease;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .theme-white {
+      background: white;
+      color: black;
+    }
+
+    .theme-black {
+      background: black;
+      color: white;
+    }
+
+    .theme-celeste {
+      background: #bde3ff;
+      color: #b91c1c;
+    }
+  </style>
+</head>
+<body class="theme-white">
+  <div class="container">
+    <h1>Ejercicio simple</h1>
+    <p>Escribe texto y presiona Enter para ver el mensaje.</p>
+    <input id="texto" type="text" placeholder="Escribe algo aquí..." />
+    <button id="cambiarColor">Cambiar colores</button>
+  </div>
+
+  <script>
+    const input = document.getElementById('texto');
+    const boton = document.getElementById('cambiarColor');
+    const temas = ['theme-white', 'theme-black', 'theme-celeste'];
+    let indiceTema = 0;
+
+    input.addEventListener('keydown', (evento) => {
+      if (evento.key === 'Enter') {
+        evento.preventDefault();
+        const valor = input.value.trim();
+        alert(valor ? `Texto ingresado:\n\n${valor}` : 'No ingresaste texto.');
+      }
+    });
+
+    boton.addEventListener('click', () => {
+      indiceTema = (indiceTema + 1) % temas.length;
+      document.body.className = temas[indiceTema];
+    });
+  </script>
+</body>
+</html>
